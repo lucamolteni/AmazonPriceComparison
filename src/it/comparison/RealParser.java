@@ -35,7 +35,7 @@ public class RealParser implements Parser {
         }
 
 
-        return str.trim();
+        return str.replace(" ", "").replace("\n", "").trim();
     }
 
 
