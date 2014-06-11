@@ -3,6 +3,7 @@ package it.comparison;
 import org.junit.Before;
 import org.junit.Test;
 
+import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
 public class AmazonComparisonTest {
@@ -27,8 +28,8 @@ public class AmazonComparisonTest {
 
         comparison.findPrices("7834920174389012");
 
-        assertTrue(amazonit.wasCalled("7834920174389012"));
-        assertTrue(amazonfrance.wasCalled("7834920174389012"));
+        amazonit.assertFindPriceWasCalled("7834920174389012");
+        amazonfrance.assertFindPriceWasCalled("7834920174389012");
     }
 
     @Test
@@ -55,10 +56,6 @@ public class AmazonComparisonTest {
 
         private String isbnCalled;
 
-        public boolean wasCalled(String isbn) {
-            return isbn.equals(isbnCalled);
-        }
-
         @Override
         public String findPrice(String isbn) {
             isbnCalled = isbn;
@@ -73,6 +70,10 @@ public class AmazonComparisonTest {
         @Override
         public String getSite() {
             return "siteUrl";
+        }
+
+        public void assertFindPriceWasCalled(String s) {
+            assertEquals("Amazon.findPrice with wrong ISBN", s, isbnCalled);
         }
     }
 
