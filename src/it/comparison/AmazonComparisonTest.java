@@ -17,8 +17,8 @@ public class AmazonComparisonTest {
     public void setUp() throws Exception {
         fakeDisplay = new FakeDisplay();
         comparison = new AmazonComparison(fakeDisplay);
-        amazonit = new FakeAmazon();
-        amazonfrance = new FakeAmazon();
+        amazonit = new FakeAmazon("6,99", "amazon.it");
+        amazonfrance = new FakeAmazon("7,00", "amazon.fr");
     }
 
     @Test
@@ -40,8 +40,7 @@ public class AmazonComparisonTest {
         PriceResults prices = comparison.findPrices("7834920174389012");
 
         assertEquals("6,99", prices.getPrice(amazonit));
-        assertEquals("6,99", prices.getPrice(amazonfrance));
-
+        assertEquals("7,00", prices.getPrice(amazonfrance));
     }
 
     @Test
@@ -56,10 +55,18 @@ public class AmazonComparisonTest {
 
         private String isbnCalled;
 
+        private String price;
+        private String site;
+
+        public FakeAmazon(String price, String url) {
+            this.price = price;
+            this.site = url;
+        }
+
         @Override
         public String findPrice(String isbn) {
             isbnCalled = isbn;
-            return "6,99";
+            return price;
         }
 
         @Override
@@ -69,7 +76,7 @@ public class AmazonComparisonTest {
 
         @Override
         public String getSite() {
-            return "siteUrl";
+            return site;
         }
 
         public void assertFindPriceWasCalled(String s) {

@@ -7,7 +7,7 @@ public class RealDisplayTest {
 
         PriceResults result = new PriceResults();
 
-        Amazon a = new AmazonComparisonTest.FakeAmazon();
+        Amazon a = new AmazonComparisonTest.FakeAmazon("6,99", "amazon.it");
 
         result.addResult(a, "6,99");
 
