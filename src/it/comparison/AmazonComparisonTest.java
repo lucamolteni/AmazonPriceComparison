@@ -39,8 +39,8 @@ public class AmazonComparisonTest {
 
         PriceResults prices = comparison.findPrices("7834920174389012");
 
-        assertTrue(prices.getPrice(amazonit).equals("6,99"));
-        assertTrue(prices.getPrice(amazonfrance).equals("6,99"));
+        assertEquals("6,99", prices.getPrice(amazonit));
+        assertEquals("6,99", prices.getPrice(amazonfrance));
 
     }
 
