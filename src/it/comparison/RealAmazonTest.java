@@ -1,7 +1,8 @@
 package it.comparison;
 
-import org.junit.Assert;
 import org.junit.Test;
+
+import static org.junit.Assert.assertEquals;
 
 public class RealAmazonTest {
 
@@ -15,8 +16,8 @@ public class RealAmazonTest {
 
         amazon.findPrice("1235452352");
 
-        Assert.assertTrue(fetcher.wasCalled("http://amazon.fr/1235452352"));
-        Assert.assertTrue(parser.wasCalled("<html>myproduct</html>"));
+        fetcher.fetchWasCalled("http://amazon.fr/1235452352");
+        parser.parseWasCalled("<html>myproduct</html>");
 
     }
 
@@ -28,8 +29,8 @@ public class RealAmazonTest {
             this.response = response;
         }
 
-        public boolean wasCalled(String parameterPassed) {
-            return parameterPassed.equals(parameter);
+        public void fetchWasCalled(String expected) {
+            assertEquals("Fetcher.fetch was called with parameter", expected, parameter);
         }
 
         @Override
@@ -43,8 +44,8 @@ public class RealAmazonTest {
 
         private String parameter;
 
-        public boolean wasCalled(String s) {
-            return s.equals(parameter);
+        public void parseWasCalled(String expected) {
+            assertEquals("Parser.parse was called with parameter", expected, parameter);
         }
 
         @Override
