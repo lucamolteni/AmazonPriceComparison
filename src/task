@@ -1,0 +1,10 @@
+Il prezzo deve essere sempre in euro (altre valute vanno convertite)
+
+DONE:
+
+il comparatore deve interrogare i vari siti per avere i prezzi
+ogni sito cerca l'isbn e restituisce il prezzo
+Il comparatore deve prendere un isbn e restituire la tabella di prezzi
+Ogni sito deve poter parsare il dato dalla pagina
+Ogni sito deve poter tirare fuori il codice html
+
