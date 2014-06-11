@@ -70,11 +70,6 @@ public class AmazonComparisonTest {
         }
 
         @Override
-        public void setSite(String s) {
-
-        }
-
-        @Override
         public String getSite() {
             return site;
         }

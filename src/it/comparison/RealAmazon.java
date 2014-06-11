@@ -18,11 +18,6 @@ public class RealAmazon implements Amazon{
     }
 
     @Override
-    public void setSite(String s) {
-        this.site = s;
-    }
-
-    @Override
     public String getSite() {
         return site;
     }
